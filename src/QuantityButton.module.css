@@ -1,0 +1,16 @@
+.button{
+    cursor: pointer;
+    background-color: #EBE0D4;
+    margin: 5px;
+    border: solid 2px black;
+    border-radius: 7px;
+    padding: 0px 5px;
+    text-align: center;
+    width: 100px;
+}
+
+.parents{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}

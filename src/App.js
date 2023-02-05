@@ -4,6 +4,7 @@ import ShoppingCart from "./ShoppingCart";
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import {CartContext} from './CartContext'
 import { useState } from "react";
+import css from "./App.module.css"
 
 function App() {
 
@@ -12,9 +13,10 @@ function App() {
   return (
     <BrowserRouter>
       <CartContext.Provider value={{cartItems, setCartItems}}>
-
-        <Link to='/'>首頁</Link>
-        <Link to='/shopping/cart'>購物車</Link>
+        <div className={css.button}>
+          <Link to='/'>產品列表</Link>
+          <Link to='/shopping/cart'>購物車</Link>
+        </div>
 
         <Routes>
           <Route path='/' element={<Page/>}/>

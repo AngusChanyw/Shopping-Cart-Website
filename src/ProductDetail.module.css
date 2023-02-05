@@ -1,0 +1,13 @@
+
+.detail{
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.link{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}

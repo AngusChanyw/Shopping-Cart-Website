@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import QuantityButton from './QuantityButton'
 import Title from './Title'
+import css from './ProductDetail.module.css'
 
 export default function ProductDetail() {
   
   let params = useParams()
-  let [productDetail, setProductDetail] = useState(null)
+  let [productDetail, setProductDetail] = useState()
 
   useEffect(()=>{
     let productList = [
@@ -36,8 +37,18 @@ export default function ProductDetail() {
         "price" : 269,
         "description" : "中國製造 孖寶牌 LED 出路指示燈箱",
         "quantity" : 3,
-      }
+      },
+      {
+        "id" : 4,
+        "name" : "智能彩膽吊燈",
+        "storage" : 3,
+        "img" : "智能彩膽吊燈.png",
+        "price" : 1269,
+        "description" : "中國製造 飛利浦 智能彩膽吊燈",
+        "quantity" : 3,
+      },
     ]
+
     let productInfo = productList.find((product)=>{
     return product.id === parseInt(params.id)
     })
@@ -46,18 +57,18 @@ export default function ProductDetail() {
 
   return (
     <div>
+      {<Title selfTitle={'產品資料'}/>}
       {
         productDetail &&
-        <div>
-        <Title selfTitle={productDetail.name+'產品資料'}/>
-        <img src={process.env.PUBLIC_URL+'/img/'+productDetail.img} width='30%'/>
-        <p>產品名稱 : {productDetail.name}</p>
-        <p>產品價錢 : HKD${productDetail.price}</p>
-        <p>產品說明 : {productDetail.description}</p>
-        <QuantityButton productInfo={productDetail}/>
+        <div className={css.detail}>
+          <img src={process.env.PUBLIC_URL+'/img/'+productDetail.img} width='30%'/>
+          <p>產品說明 : {productDetail.description}</p><br/>
+          <p>產品名稱 : {productDetail.name}</p>
+          <p>產品價格 : HKD${productDetail.price}</p>
+          <QuantityButton productInfo={productDetail}/>
         </div>
       }
-      <Link to='/'>回到首頁</Link>
+      <Link to='/' className={css.link}>返回選購產品</Link>
     </div>
   )
 }

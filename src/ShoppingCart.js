@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import QuantityButton from './QuantityButton';
 import Title from './Title'
+import css from './ShoppingCart.module.css'
 
 export default function ShoppingCart() {
 
@@ -12,8 +13,8 @@ export default function ShoppingCart() {
   let payTotal = cartItems.reduce((total, product)=>{
     return total += product.price * product.quantity
   },0)
-  const freeDeliver = 99
-  const freeInstall = 399
+  const freeDeliver = 499
+  const freeInstall = 1299
 
   return (
     <div>
@@ -21,14 +22,16 @@ export default function ShoppingCart() {
 
       {
         !cartDetail &&
-        <div>
-          <div id="product">
+        <div className={css.parents}>
+          <div className={css.productParents}>
             {
               cartItems.map(product=>(
-                <div key={product.id}>
-                  <img src={process.env.PUBLIC_URL+'/img/'+product.img} width='25%'/><br/>
+                <div className={css.product} key={product.id}>
+                  <Link to={'/product/detail/'+product.id}>
+                    <img src={process.env.PUBLIC_URL+'/img/'+product.img} width='180px'/><br/>
+                  </Link>
                   <p>產品名稱 : {product.name}<br/></p>
-                  <p>產品價錢 : HKD${product.price}<br/></p>
+                  <p>產品價格 : HKD${product.price}<br/></p>
                   <p>購買數量 : {product.quantity}個<br/></p>
                   <QuantityButton productInfo={product}/>
                 </div>
@@ -36,20 +39,22 @@ export default function ShoppingCart() {
             }
           </div>
 
-          <div id="checkOut">
-            <div>全部產品總值:</div>
-            <div>HKD${payTotal}</div>
-
-            {
-              payTotal >= freeDeliver ?
-              <div>免費送貨</div> :
-              <div>滿HKD${freeDeliver}免費送貨<br/>還欠HKD${freeDeliver - payTotal}免費安裝</div>
-            }
-            {
-              payTotal >= freeInstall ?
-              <div>免費安裝</div> :
-              <div>滿HKD${freeInstall}免費安裝<br/>還欠HKD${freeInstall - payTotal}免費安裝</div>
-            }
+          <div className={css.checkOut}>
+            <div className={css.allPrice}>產品總價 : HKD${payTotal}</div><br/>
+            <div className={css.freeItems}>
+              {
+                payTotal >= freeDeliver ?
+                <div style={{color : 'red'}}>免費送貨</div> :
+                <div>滿HKD${freeDeliver}免費送貨*</div>
+              }
+              {
+                payTotal >= freeInstall ?
+                <div style={{color : 'red'}}>免費安裝</div> :
+                <div>滿HKD${freeInstall}免費安裝*</div>
+              }
+              <br/>
+            </div>
+            <div className={css.check}>結算</div>
           </div>
         </div>
       }

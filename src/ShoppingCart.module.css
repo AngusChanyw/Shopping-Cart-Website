@@ -1,0 +1,53 @@
+.parents{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.productParents{
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 5px #BBF5F3;
+    border-radius: 20px;
+    background-color: #9E9ADA;
+    text-align: center;
+    margin: 10px;
+}
+
+.product{
+    margin: 10px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: white;
+    width: 200px;
+}
+
+.checkOut{
+    border: solid 2px black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    height: 165px;
+}
+
+.allPrice{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.check{
+    border: solid 2px black;
+    background-color: #9E9ADA;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.freeItems{
+    font-size: 15px;
+}

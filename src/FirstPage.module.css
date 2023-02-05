@@ -1,0 +1,26 @@
+.display{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: solid 5px #9E9ADA;
+    border-radius: 20px;
+    background-color: #BBF5F3;
+    padding: 5px;
+    margin: 20px;
+}
+
+.item{
+    text-align: center;
+    border: solid 2px #000000;
+    border-radius: 15px;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    margin: 5px;
+    padding: 10px;
+}
+
+.button{
+    margin: 5px;
+    text-align: end;
+}

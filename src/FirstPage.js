@@ -1,5 +1,5 @@
 import React from 'react'
-import css from './ProductList.module.css'
+import css from './FirstPage.module.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Title from './Title'
@@ -34,7 +34,16 @@ export default function Product() {
       "price" : 269,
       "description" : "中國製造 孖寶牌 LED 出路指示燈箱",
       "quantity" : 3,
-    }
+    },
+    {
+      "id" : 4,
+      "name" : "智能彩膽吊燈",
+      "storage" : 3,
+      "img" : "智能彩膽吊燈.png",
+      "price" : 1269,
+      "description" : "中國製造 飛利浦 智能彩膽吊燈",
+      "quantity" : 3,
+    },
   ]
   
   const [showProduct, setShowProduct] = useState(true)
@@ -49,21 +58,21 @@ export default function Product() {
     <div>
       <Title selfTitle={'請選擇想購買的產品'}/>
 
-      <div>
+      <div className={css.display}>
         {
           showProduct && productList.map(productItem=>(
-            <div key={productItem.id}>
-               <Link to={'/product/detail/'+productItem.id}>
-                <img className={css.img} src={process.env.PUBLIC_URL+'/img/'+productItem.img} width='30%'/><br/>
+            <div className={css.item} key={productItem.id}>
+              <Link to={'/product/detail/'+productItem.id}>
+                <img src={process.env.PUBLIC_URL+'/img/'+productItem.img} width='200px'/><br/>
               </Link>
               {productItem.name}<br/>
-              倉儲剩下數量: {productItem.storage}<br/>
+              價格 : HKD${productItem.price}<br/>
               <QuantityButton productInfo={productItem}/>
             </div>
           ))
         }
       </div>
-      <div>
+      <div className={css.button}>
         {showProduct && <button onClick={hide}>隱藏產品</button>}
         {!showProduct && <button onClick={display}>顯示產品</button>}
       </div>
